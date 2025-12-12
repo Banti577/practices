@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+.light-theme {
+  background: white;
+  color: black;
+}
+
+.dark-theme {
+  background: #222;
+  color: white;
+}
+
+
+
+
