@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useUsers } from "../contexts/UserContext";
+
 export const PostData = () => {
   const { users, setUsers } = useUsers();
 

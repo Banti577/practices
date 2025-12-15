@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
+
 import { useUsers } from "../contexts/UserContext";
 import Loader from "../Spinner/Loader";
 
-
 function Home({ className = "" }) {
-  const {users, IsLoader} = useUsers();
+  const { users, IsLoader } = useUsers();
   const navigate = useNavigate();
   return (
     <div
@@ -21,7 +21,8 @@ function Home({ className = "" }) {
       </div>
       <div className="flow-root">
         <ul role="list" className="divide-y divide-default">
-          {IsLoader === false ? users &&
+          {IsLoader === false ? (
+            users &&
             users.map((item) => {
               return (
                 <li key={item.id} className="py-4 sm:py-4">
@@ -47,7 +48,10 @@ function Home({ className = "" }) {
                   </div>
                 </li>
               );
-            }) : <Loader />}
+            })
+          ) : (
+            <Loader />
+          )}
         </ul>
       </div>
     </div>

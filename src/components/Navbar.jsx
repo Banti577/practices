@@ -1,20 +1,17 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useTheme } from "../contexts/themeContext";
 import { HiMoon } from "react-icons/hi2";
+import { useTheme } from "../contexts/themeContext";
 import { MdOutlineWbSunny } from "react-icons/md";
-
-import PostData from "./PostData";
 
 function Navbar() {
   const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
-  const inputRef = useRef(null);
+  const [isopen, setIsOpen] = useState(false);
 
   const handleToggleBtn = () => {
-    inputRef.current?.classList.toggle("max-h-0");
-    inputRef.current?.classList.toggle("opacity-0");
+   setIsOpen(prev => !prev);
   };
 
   const handleToggleTheme = () => {
@@ -57,8 +54,9 @@ function Navbar() {
 
         <div
           id="menu"
-          ref={inputRef}
-          className="z-0 md:flex items-center md:justify-end md:space-x-15 md:w-[90%] max-h-0 opacity-0 md:max-h-none md:opacity-100 overflow-hidden transition-all duration-600 ease-in-out"
+          className={`z-0 md:flex items-center md:justify-end md:space-x-15 md:w-[90%] max-h-0 opacity-0 md:max-h-none md:opacity-100 overflow-hidden transition-all duration-700 ease-in-out ${
+            isopen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
         >
           <ul className="md:flex justify-center space-x-4 text-xl items-center">
             <li className="cursor-pointer" onClick={() => navigate("/")}>
